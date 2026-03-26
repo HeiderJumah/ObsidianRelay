@@ -1,5 +1,8 @@
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const userModel = require("../models/userModel");
+
+const JWT_SECRET = "your_secret_key_change_this"; // TODO: Move to .env
 
 exports.register = async (req, res) => {
   const { username, email, password } = req.body;
@@ -29,6 +32,11 @@ exports.login = async (req, res) => {
 
     if (!valid) return res.status(401).json("Wrong password");
 
-    res.json({ message: "Login success" });
+    const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
+      expiresIn: "24h"
+    });
+
+    console.log("Token generated:", token); // Debug
+    res.json({ message: "Login success", token });
   });
 };
