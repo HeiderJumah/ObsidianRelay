@@ -1,4 +1,4 @@
-# \# OBSIDIAN RELAY – Terminal Trading Post
+# \#OBSIDIAN RELAY – Terminal Trading Post
 
 # 
 
@@ -10,7 +10,7 @@
 
 # 
 
-# \## 🧠 Projektübersicht
+# \##Projektübersicht
 
 # 
 
@@ -22,7 +22,7 @@
 
 # 
 
-# \## 🗺️ Projekt Roadmap
+# \##Projekt Roadmap
 
 # 
 
@@ -34,7 +34,7 @@
 
 # 
 
-# \## 🗄️ Datenbank Design
+# \##Datenbank Design
 
 # 
 
@@ -46,7 +46,7 @@
 
 # 
 
-# \## 🧩 System Architektur
+# \##System Architektur
 
 # 
 
@@ -58,7 +58,7 @@
 
 # 
 
-# \## 🚀 Features
+# \##Features
 
 # 
 
@@ -82,7 +82,7 @@
 
 # 
 
-# \## 🛠️ Technologien
+# \##Technologien
 
 # 
 
