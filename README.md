@@ -1,104 +1,54 @@
-# \#OBSIDIAN RELAY – Terminal Trading Post
+OBSIDIAN RELAY – Terminal Trading Post
+---
 
-# 
+Eine datenbankbasierte Webanwendung für ein MMORPG-Handelssystem.
 
-# Eine datenbankbasierte Webanwendung für ein MMORPG-Handelssystem.
+---
 
-# 
+**Projektübersicht**
 
-# \---
+Das Projekt simuliert ein Handelssystem aus einem MMORPG, bei dem Spieler mit NPC-Händlern interagieren können.
 
-# 
+---
 
-# \##Projektübersicht
+**Projekt Roadmap**
 
-# 
+![Roadmap](media/readme\_img/roadmap.png)
 
-# Das Projekt simuliert ein Handelssystem aus einem MMORPG, bei dem Spieler mit NPC-Händlern interagieren können.
+---
 
-# 
+**Datenbank Design**
 
-# \---
+![Datenbank Struktur](media/readme\_img/database.png)
 
-# 
+---
 
-# \##Projekt Roadmap
+**System Architektur**
 
-# 
+![Architektur](media/readme\_img/architektur.png)
 
-# !\[Roadmap](media/readme\_img/roadmap.png)
+---
 
-# 
+**Features**
 
-# \---
+- ✅ Benutzer Registrierung
+- ✅ Login System
+- ✅ Passwort Hashing (bcrypt)
+- ✅ JWT Authentifizierung
+- ✅ Geschützte API Routen
+- 🔄 Inventory System (in Arbeit)
+- 🔄 Marketplace System (in Arbeit)
 
-# 
+---
 
-# \##Datenbank Design
+**Technologien**
 
-# 
+- Node.js
+- Express.js
+- MariaDB (SQL)
+- JWT (Auth)
+- bcrypt (Security)
+- Thunder Client / Postman
 
-# !\[Datenbank Struktur](media/readme\_img/database.png)
-
-# 
-
-# \---
-
-# 
-
-# \##System Architektur
-
-# 
-
-# !\[Architektur](media/readme\_img/architektur.png)
-
-# 
-
-# \---
-
-# 
-
-# \##Features
-
-# 
-
-# \- ✅ Benutzer Registrierung
-
-# \- ✅ Login System
-
-# \- ✅ Passwort Hashing (bcrypt)
-
-# \- ✅ JWT Authentifizierung
-
-# \- ✅ Geschützte API Routen
-
-# \- 🔄 Inventory System (in Arbeit)
-
-# \- 🔄 Marketplace System (in Arbeit)
-
-# 
-
-# \---
-
-# 
-
-# \##Technologien
-
-# 
-
-# \- Node.js
-
-# \- Express.js
-
-# \- MariaDB (SQL)
-
-# \- JWT (Auth)
-
-# \- bcrypt (Security)
-
-# \- Thunder Client / Postman
-
-# 
-
-# \---
+---
 
