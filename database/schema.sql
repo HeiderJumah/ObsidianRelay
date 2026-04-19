@@ -1,7 +1,9 @@
-CREATE TABLE users (
- id INT AUTO_INCREMENT PRIMARY KEY,
- username VARCHAR(50),
- email VARCHAR(100),
- password VARCHAR(255),
- created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE inventory (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    item_id INT,
+    quantity INT DEFAULT 1,
+
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (item_id) REFERENCES items(id)
 );
