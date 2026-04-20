@@ -1,12 +1,21 @@
 const inventoryModel = require("../models/inventoryModel");
+const userModel = require("../models/userModel");
 
 exports.getInventory = (req, res) => {
-    const userId = req.user.id;
+  const userId = req.user.id;
 
-    inventoryModel.getInventoryByUser(userId, (err, results) => {
-        if (err) return res.status(500).json(err);
-        res.json(results);
+  inventoryModel.getInventoryByUser(userId, (err, inventoryResults) => {
+    if (err) return res.status(500).json(err);
+
+    userModel.getUserById(userId, (err, userResults) => {
+      if (err) return res.status(500).json(err);
+
+      res.json({
+        gold: userResults[0].gold,
+        inventory: inventoryResults
+      });
     });
+  });
 };
 
 exports.addItem = (req, res) => {
