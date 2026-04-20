@@ -70,7 +70,64 @@ exports.buyItem = (req, res) => {
   });
 };
 
-// 🔹 TEMP FIX (damit Server nicht crasht)
+// 🔹 Item verkaufen
 exports.sellItem = (req, res) => {
-  res.json({ message: "sell coming soon" });
+    console.log("NEUE SELL FUNKTION AKTIV");
+    const userId = req.user.id;
+    const { item_id, quantity } = req.body;
+
+    // Default = 1
+    const sellQuantity = quantity || 1;
+
+    if (!item_id) {
+        return res.status(400).json({ message: "item_id is required" });
+    }
+
+    if (sellQuantity <= 0) {
+        return res.status(400).json({ message: "Invalid quantity" });
+    }
+
+    // 1. Inventory holen
+    inventoryModel.getInventoryByUser(userId, (err, inventory) => {
+        if (err) return res.status(500).json(err);
+
+        const item = inventory.find(i => i.item_id === item_id);
+
+        if (!item) {
+            return res.status(404).json({ message: "Item not in inventory" });
+        }
+
+        if (item.quantity < sellQuantity) {
+            return res.status(400).json({ message: "Not enough quantity" });
+        }
+
+        // 2. Preis berechnen
+        const sellPricePerItem = Math.floor(item.price * 0.5);
+        const totalSellPrice = sellPricePerItem * sellQuantity;
+
+        // 3. Item entfernen (mit quantity)
+        inventoryModel.removeItem(userId, item_id, sellQuantity, (err) => {
+            if (err) return res.status(500).json(err);
+
+            // 4. Gold holen
+            marketModel.getUserGold(userId, (err, userResult) => {
+                if (err) return res.status(500).json(err);
+
+                const currentGold = userResult[0].gold;
+                const newGold = currentGold + totalSellPrice;
+
+                // 5. Gold updaten
+                marketModel.updateUserGold(userId, newGold, (err) => {
+                    if (err) return res.status(500).json(err);
+
+                    res.json({
+                        message: "Item sold",
+                        quantity: sellQuantity,
+                        earned: totalSellPrice,
+                        gold_left: newGold
+                    });
+                });
+            });
+        });
+    });
 };

@@ -19,39 +19,39 @@ exports.addItem = (userId, itemId, quantity, callback) => {
   db.query(sql, [userId, itemId, quantity, quantity], callback);
 };
 
-exports.removeItem = (userId, itemId, callback) => {
-  
-    // 1. Check current quantity
-  const checkSql = `
-    SELECT quantity FROM inventory
-    WHERE user_id = ? AND item_id = ?
-  `;
+exports.removeItem = (userId, itemId, quantity, callback) => {
 
-  db.query(checkSql, [userId, itemId], (err, results) => {
-    if (err) return callback(err);
-
-    if (results.length === 0) {
-      return callback(new Error("Item not found in inventory"));
-    }
-
-    const currentQuantity = results[0].quantity;
-
-    // 2. If more than 1 → decrease
-    if (currentQuantity > 1) {
-      const updateSql = `
-        UPDATE inventory
-        SET quantity = quantity - 1
+    // 1. aktuelle Menge checken
+    const checkSql = `
+        SELECT quantity FROM inventory
         WHERE user_id = ? AND item_id = ?
-      `;
-      db.query(updateSql, [userId, itemId], callback);
-    } 
-    // 3. If last item → delete row
-    else {
-      const deleteSql = `
-        DELETE FROM inventory
-        WHERE user_id = ? AND item_id = ?
-      `;
-      db.query(deleteSql, [userId, itemId], callback);
-    }
-  });
+    `;
+
+    db.query(checkSql, [userId, itemId], (err, results) => {
+        if (err) return callback(err);
+
+        if (results.length === 0) {
+            return callback(new Error("Item not found"));
+        }
+
+        const currentQuantity = results[0].quantity;
+
+        // 2. Wenn weniger oder gleich → löschen
+        if (currentQuantity <= quantity) {
+            const deleteSql = `
+                DELETE FROM inventory
+                WHERE user_id = ? AND item_id = ?
+            `;
+            db.query(deleteSql, [userId, itemId], callback);
+        } 
+        // 3. sonst reduzieren
+        else {
+            const updateSql = `
+                UPDATE inventory
+                SET quantity = quantity - ?
+                WHERE user_id = ? AND item_id = ?
+            `;
+            db.query(updateSql, [quantity, userId, itemId], callback);
+        }
+    });
 };
