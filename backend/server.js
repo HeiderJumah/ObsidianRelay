@@ -25,4 +25,4 @@ app.listen(3000, () => {
 });
 
 // Auth: POST /api/auth/register, POST /api/auth/login
-// Protected routes: All require Authorization header with Bearer token
+// Protected routes: All require Authorization header with Bearer tokentaskkill /F /IM node.exe
