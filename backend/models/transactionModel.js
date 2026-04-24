@@ -1,5 +1,8 @@
+// transactionModel.js - Alle Funktionen rund um Transaktionen (Käufe/Verkäufe)
+
 const db = require("../config/database");
 
+// transactionModel.js - Alle Funktionen rund um Transaktionen (Käufe/Verkäufe)
 exports.createTransaction = (userId, itemId, quantity, price, type, callback) => {
   const sql = `
     INSERT INTO transactions (user_id, item_id, quantity, price, type)
@@ -9,6 +12,7 @@ exports.createTransaction = (userId, itemId, quantity, price, type, callback) =>
   db.query(sql, [userId, itemId, quantity, price, type], callback);
 };
 
+// Get transactions for a user
 exports.getTransactionsByUser = (userId, callback) => {
   const sql = `
     SELECT t.*, items.title

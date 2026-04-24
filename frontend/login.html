@@ -1,10 +1,38 @@
-<div class="container">
-  <h2>Login</h2>
+<!-- login.html - Login and registration page -->
+<link rel="stylesheet" href="css/style.css">
 
-  <input id="username" placeholder="Username"><br><br>
-  <input id="password" type="password" placeholder="Password"><br><br>
+<div class="login-container">
 
-  <button onclick="login()">Login</button>
+    <!-- Background handled by CSS -->
+    <div class="login-box">
+        
+        <!-- Switch between login and registration -->
+        <div class="tabs">
+            <button onclick="showLogin()">Login</button>
+            <button onclick="showRegister()">Register</button>
+        </div>
+
+        <!-- Login -->
+        <div id="loginForm">
+            <input id="loginUsername" placeholder="Username">
+            <input id="loginPassword" type="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </div>
+        <!-- Registration -->
+        <div id="registerForm" style="display:none;">
+            <input id="registerEmail" placeholder="Email">
+            <input id="registerUsername" placeholder="Username">
+            <input id="registerPassword" type="password" placeholder="Password">
+            <button onclick="register()">Register</button>
+        </div>
+
+        <!-- Status text for login/registration feedback -->
+        <div id="statusText"></div>
+
+    </div>
+
 </div>
 
+<!-- Include API and auth scripts -->
+<script src="js/api.js"></script>
 <script src="js/auth.js"></script>

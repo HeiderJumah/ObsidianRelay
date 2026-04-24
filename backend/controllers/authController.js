@@ -20,9 +20,9 @@ exports.register = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
-  userModel.findUserByEmail(email, async (err, results) => {
+  userModel.findUserByLogin(username, async (err, results) => {
     if (err) return res.status(500).json(err);
     if (results.length === 0) return res.status(404).json("User not found");
 

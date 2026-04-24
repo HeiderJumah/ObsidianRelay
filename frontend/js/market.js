@@ -1,3 +1,6 @@
+// market.js - Handles market page interactions
+
+// Load market items on page load
 async function loadMarket() {
   const data = await apiRequest("/market");
 
@@ -13,6 +16,7 @@ async function loadMarket() {
   });
 }
 
+// Handle buying an item
 async function buy(itemId) {
   await apiRequest("/market/buy", "POST", {
     item_id: itemId,
@@ -22,4 +26,5 @@ async function buy(itemId) {
   alert("Bought!");
 }
 
+//
 loadMarket();

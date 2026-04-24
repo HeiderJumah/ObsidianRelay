@@ -1,3 +1,6 @@
+// schema.sql - Datenbankschema für Obsidian Relay
+
+// Users-Tabelle
 CREATE TABLE transactions (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,

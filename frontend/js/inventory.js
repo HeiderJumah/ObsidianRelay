@@ -1,3 +1,6 @@
+// inventory.js - Handles inventory page interactions
+
+// Load inventory on page load
 async function loadInventory() {
   const data = await apiRequest("/inventory");
 
