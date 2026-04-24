@@ -63,7 +63,7 @@ exports.buyItem = (req, res) => {
         inventoryModel.addItem(userId, item_id, buyQuantity, (err) => {
           if (err) return res.status(500).json(err);
 
-          // 🔥 TRANSACTION HIER
+          // TRANSACTION 
           transactionModel.createTransaction(
             userId,
             item_id,
@@ -134,7 +134,7 @@ exports.sellItem = (req, res) => {
         marketModel.updateUserGold(userId, newGold, (err) => {
           if (err) return res.status(500).json(err);
 
-          // 🔥 TRANSACTION HIER
+          // TRANSACTION 
           transactionModel.createTransaction(
             userId,
             item_id,
