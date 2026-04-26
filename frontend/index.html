@@ -1,59 +1,86 @@
+<!-- Main relay page with navigation and links to all sections -->
+
 <!DOCTYPE html>
 
 <html lang="en">
+
     <head>
-    <meta charset="UTF-8">
-    <title>Obsidian Relay</title>
-    <link rel="stylesheet" href="css/style.css">
+        <meta charset="UTF-8">
+        <title>Obsidian Relay</title>
+        <link rel="stylesheet" href="css/style.css">
     </head>
-<body>
 
-    <!-- NAVBAR -->
-    <div class="navbar">
-        <div id="navbar-text">HELLO USER - WELCOME TO OBSIDIAN RELAY!</div>
+    <body>
 
-        <div class="nav-links">
-            <button onclick="goTo('index.html')" class="nav-relay">⚛ RELAY</button>
-            <button onclick="goTo('marketplace.html')">MARKET</button>
-            <button onclick="goTo('inventory.html')">HANGAR</button>
-            <button onclick="goTo('transactions.html')">TRADE</button>
-            <button onclick="logout()">LOGOUT</button>
-        </div>
-    </div>
-
-    <!-- MAIN RELAY -->
-    <div class="relay-container">
-
-        <img src="../../media/website_img/login_bg.png" class="relay-bg" alt="Relay Background">
-
-        <div class="relay-points">
-            <!-- TOP ROW -->
-            <div class="relay-row top-row">
-                <button onclick="goTo('inventory.html')" class="point hangar">HANGAR</button>
-                <button onclick="goTo('marketplace.html')" class="point market">MARKET</button>
-                <button onclick="goTo('#')" class="point habitat">HABITAT</button>
+        <!-- NAVBAR -->
+        <div class="navbar">
+            <div id="navbar-text"></div>
+            <div class="nav-center">
+                <div class="nav-label">FAST TRACK</div>
+                <div class="nav-links">
+                    <button class="nav-icon relay-icon" onclick="goTo('index.html')" title="RELAY"></button>
+                    <button class="nav-icon market-icon" onclick="goTo('market.html')" title="MARKET"></button>
+                    <button class="nav-icon habitat-icon" onclick="goTo('inventory.html')" title="HABITAT"></button>
+                    <button class="nav-icon hangar-icon" onclick="goTo('hangar.html')" title="HANGAR"></button>
+                    <button class="nav-icon trade-icon" onclick="goTo('transactions.html')" title="TRADE"></button>
+                    <button class="nav-icon plaza-icon" onclick="goTo('plaza.html')" title="PLAZA"></button>
+                    <button class="nav-icon archive-icon" onclick="goTo('archive.html')" title="ARCHIVE"></button>
+                </div>
             </div>
-
-            <!-- MIDDLE ROW -->
-            <div class="relay-row middle-row">
-                <button onclick="goTo('transactions.html')" class="point trade">TRADE</button>
-                <button onclick="goTo('#')" class="point plaza">⚛ PLAZA</button>
-                <button onclick="goTo('#')" class="point archive">ARCHIVE</button>
-            </div>
+            <button class="nav-logout" onclick="logout()">
+                <span>LOG OUT</span>
+                <div class="logout-icon"></div>
+            </button>
         </div>
 
-    </div>
+        <!-- MAIN RELAY -->
+        <div class="relay-container">
 
-    <script src="js/main.js"></script>
-    <script>
-        // Animate navbar text on load
-        window.addEventListener('load', () => {
-            const text = document.getElementById('navbar-text');
-            text.style.animation = 'none';
-            setTimeout(() => {
-                text.style.animation = 'textGlow 2s ease-in-out infinite';
-            }, 100);
-        });
-    </script>
-</body>
+            <img src="/media/website_img/main_bg.png" class="relay-bg" alt="Relay Background">
+
+            <div class="relay-points">
+                <!-- TOP ROW -->
+                <div class="relay-row top-row">
+                    <button onclick="goTo('hangar.html')" class="point hangar">HANGAR</button>
+                    <button onclick="goTo('market.html')" class="point market">MARKET</button>
+                    <button onclick="goTo('inventory.html')" class="point habitat">HABITAT</button>
+                </div>
+
+                <!-- MIDDLE ROW -->
+                <div class="relay-row middle-row">
+                    <button onclick="goTo('transactions.html')" class="point trade">TRADE</button>
+                    <button onclick="goTo('plaza.html#')" class="point plaza">PLAZA</button>
+                    <button onclick="goTo('archive.html')" class="point archive">ARCHIVE</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- NEWS & ALERTS BAR -->
+        <div class="news-bar">
+            <div class="news-avatar">
+                <img src="/media/website_img/news_avatar.png" alt="News Avatar">
+            </div>
+            <div class="news-box news-yellow">
+                <span class="news-label">NEWS:</span>
+                <div class="news-scroll">
+                    <p>• HANGAR MAINTENANCE ON DECK 981 ONGOING - PLEASE BE PATIENT. • HANGAR MAINTENANCE ON DECK 981 ONGOING - PLEASE BE PATIENT. •</p>
+                    <p>• THE ARCHIVE IS UNDER CONSTRUCTION. USE THE NEXT RELAY - LINGCON AS/32B1 904.532KM • THE ARCHIVE IS UNDER CONSTRUCTION. USE THE NEXT RELAY - LINGCON AS/32B1 904.532KM •</p>
+                </div>
+            </div>
+            <div class="news-box news-red">
+                <span class="news-label">ALERT:</span>
+                <div class="news-scroll">
+                    <p>• UNAUTHORIZED TRADING IS A SERIOUS FORM OF MISCONDUCT - BEWARE! • UNAUTHORIZED TRADING IS A SERIOUS FORM OF MISCONDUCT - BEWARE! •</p>
+                    <p>• UNAUTHORIZED TRADING IS A SERIOUS FORM OF MISCONDUCT - BEWARE! • UNAUTHORIZED TRADING IS A SERIOUS FORM OF MISCONDUCT - BEWARE! •</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Include API and other scripts -->
+        <script src="js/api.js"></script>
+        <script src="js/main.js"></script>
+
+    </body>
+
 </html>

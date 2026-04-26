@@ -1,4 +1,4 @@
-// transactions.js - Handles transactions page interactions
+// Handles transactions page interactions
 
 // Load transactions on page load
 async function loadTransactions() {

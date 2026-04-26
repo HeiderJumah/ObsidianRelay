@@ -1,4 +1,4 @@
-// auth.js - Handles login and registration interactions
+// Handles login and registration interactions
 
 // switch between login and register forms
 function showLogin() {
@@ -27,6 +27,7 @@ async function login() {
 
     if (data.token) {
     localStorage.setItem("token", data.token);
+    localStorage.setItem("username", username);
     document.getElementById("statusText").innerText = "Login success";
   
      setTimeout(() => {

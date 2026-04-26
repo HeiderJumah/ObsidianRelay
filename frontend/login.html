@@ -1,4 +1,5 @@
-<!-- login.html - Login and registration page -->
+<!-- Login and registration page -->
+ 
 <link rel="stylesheet" href="css/style.css">
 
 <div class="login-container">
@@ -8,8 +9,14 @@
         
         <!-- Switch between login and registration -->
         <div class="tabs">
-            <button onclick="showLogin()">Login</button>
-            <button onclick="showRegister()">Register</button>
+            <button onclick="showLogin()" class="tab-btn login-tab">
+                <div class="login-icon"></div>
+                <span>LOGIN</span>
+            </button>
+            <button onclick="showRegister()" class="tab-btn register-tab">
+                <div class="register-icon"></div>
+                <span>REGISTER</span>
+            </button>
         </div>
 
         <!-- Login -->

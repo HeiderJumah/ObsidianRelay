@@ -1,4 +1,4 @@
-<!-- Transactions page -->
+<!-- Marketplace page -->
 
 <!DOCTYPE html>
 
@@ -14,7 +14,7 @@
         
         <!-- NAVBAR -->
         <div class="navbar">
-            <div id="navbar-text">> TRADE.</div>
+            <div id="navbar-text">> MARKET.</div>
             <div class="nav-center">
                 <div class="nav-label">FAST TRACK</div>
                 <div class="nav-links">
@@ -34,10 +34,60 @@
         </div>
 
         <!-- MAIN CONTENT -->
-        <div class="main-content">
-            <h1>TRADE</h1>
-            <p>This is the trade page. Here you can view and manage your trading activities within the Obsidian Relay network.</p>
-        </div>
+        <div class="marketplace-container">
+
+            <!-- NPC SELECTION -->
+            <div id="npcSelection" class="npc-selection">
+
+                <div class="npc-card" onclick="openNPC(0)">
+                    <div class="npc-name">TECH DEALER</div>
+                    <div class="npc-avatar"></div>
+                </div>
+
+                <div class="npc-card" onclick="openNPC(1)">
+                    <div class="npc-name">BLACK MARKET</div>
+                    <div class="npc-avatar"></div>
+                </div>
+
+                <div class="npc-card" onclick="openNPC(2)">
+                    <div class="npc-name">ARCHIVE BOT</div>
+                    <div class="npc-avatar"></div>
+                </div>
+
+                <div class="npc-card" onclick="openNPC(3)">
+                    <div class="npc-name">HABITAT AI</div>
+                    <div class="npc-avatar"></div>
+                </div>
+
+            </div>
+
+            <!-- NPC DETAIL -->
+            <div id="npcDetail" class="npc-detail hidden">
+
+                <div class="npc-detail-box">
+
+                    <div class="npc-left">
+                        <div id="npcDetailName" class="npc-name"></div>
+                        <div class="npc-avatar big"></div>
+                    </div>
+
+                    <div class="npc-right">
+                        <div class="npc-top">
+                            <div id="npcCredits">CREDITS: 0C</div>
+                            <div id="npcDescription" class="npc-description"></div>
+                        </div>
+
+                        <div id="npcItems" class="npc-items"></div>
+
+                        <button class="back-btn" onclick="closeNPC()">BACK</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+         </div>
+
         <!-- NEWS & ALERTS BAR -->
         <div class="news-bar">
             <div class="news-avatar">
@@ -58,9 +108,11 @@
                 </div>
             </div>
         </div>
+
         <!-- Include API and other scripts -->
         <script src="js/api.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/market.js"></script>
 
     </body>
 

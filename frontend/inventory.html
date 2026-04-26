@@ -1,11 +1,81 @@
-<!-- inventory.html - Inventory page -->
+<!-- Inventory page -->
 
-<!-- Container for inventory items -->
-<div class="container">
-  <h2>Inventory</h2>
-  <div id="inventory"></div>
-</div>
+<!DOCTYPE html>
 
-<!-- Include API and inventory scripts -->
-<script src="js/api.js"></script>
-<script src="js/inventory.js"></script>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Obsidian Relay</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        
+        <!-- NAVBAR -->
+        <div class="navbar">
+            <div id="navbar-text">> HABITAT.</div>
+            <div class="nav-center">
+                <div class="nav-label">FAST TRACK</div>
+                <div class="nav-links">
+                    <button class="nav-icon relay-icon" onclick="goTo('index.html')" title="RELAY"></button>
+                    <button class="nav-icon market-icon" onclick="goTo('market.html')" title="MARKET"></button>
+                    <button class="nav-icon habitat-icon" onclick="goTo('inventory.html')" title="HABITAT"></button>
+                    <button class="nav-icon hangar-icon" onclick="goTo('hangar.html')" title="HANGAR"></button>
+                    <button class="nav-icon trade-icon" onclick="goTo('transactions.html')" title="TRADE"></button>
+                    <button class="nav-icon plaza-icon" onclick="goTo('plaza.html')" title="PLAZA"></button>
+                    <button class="nav-icon archive-icon" onclick="goTo('archive.html')" title="ARCHIVE"></button>
+                </div>
+            </div>
+            <button class="nav-logout" onclick="logout()">
+                <span>LOG OUT</span>
+                <div class="logout-icon"></div>
+            </button>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="inventory-wrapper">
+
+          <!-- LEFT: USER PANEL -->
+          <div class="user-panel">
+              <div class="credits">CREDITS: <span id="credits">0</span>C</div>
+              <div class="user-avatar"></div>
+          </div>
+
+          <!-- RIGHT: INVENTORY -->
+          <div class="inventory-section">
+              <div class="inventory-title">INVENTORY</div>
+              <div id="inventory" class="inventory-grid"></div>
+          </div>
+
+       </div>
+
+        <!-- NEWS & ALERTS BAR -->
+        <div class="news-bar">
+            <div class="news-avatar">
+                <img src="../media/website_img/news_avatar.png" alt="News Avatar">
+            </div>
+            <div class="news-box news-yellow">
+                <span class="news-label">NEWS:</span>
+                <div class="news-scroll">
+                    <p>• HANGAR MAINTENANCE ON DECK 981 ONGOING - PLEASE BE PATIENT. • HANGAR MAINTENANCE ON DECK 981 ONGOING - PLEASE BE PATIENT. •</p>
+                    <p>• THE ARCHIVE IS UNDER CONSTRUCTION. USE THE NEXT RELAY - LINGCON AS/32B1 904.532KM • THE ARCHIVE IS UNDER CONSTRUCTION. USE THE NEXT RELAY - LINGCON AS/32B1 904.532KM •</p>
+                </div>
+            </div>
+            <div class="news-box news-red">
+                <span class="news-label">ALERT:</span>
+                <div class="news-scroll">
+                    <p>• UNAUTHORIZED TRADING IS A SERIOUS FORM OF MISCONDUCT - BEWARE! • UNAUTHORIZED TRADING IS A SERIOUS FORM OF MISCONDUCT - BEWARE! •</p>
+                    <p>• UNAUTHORIZED TRADING IS A SERIOUS FORM OF MISCONDUCT - BEWARE! • UNAUTHORIZED TRADING IS A SERIOUS FORM OF MISCONDUCT - BEWARE! •</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Include API and other scripts -->
+        <script src="js/api.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/inventory.js"></script>
+        
+    </body>
+
+</html>

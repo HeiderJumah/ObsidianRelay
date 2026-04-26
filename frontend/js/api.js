@@ -1,4 +1,4 @@
-// api.js - Helper functions for making API requests
+// Helper functions for making API requests
 
 const API_URL = "http://localhost:3000/api";
 
