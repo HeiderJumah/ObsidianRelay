@@ -36,53 +36,38 @@
         <!-- MAIN CONTENT -->
         <div class="marketplace-container">
 
-            <!-- NPC SELECTION -->
-            <div id="npcSelection" class="npc-selection">
+            <!-- NPC SELECTION VIEW -->
+            <div id="npcSelection" class="npc-selection"></div>
 
-                <div class="npc-card" onclick="openNPC(0)">
-                    <div class="npc-name">TECH DEALER</div>
-                    <div class="npc-avatar"></div>
-                </div>
+            <!-- NPC DETAIL VIEW -->
+            <div id="npcDetail" class="npc-detail-container hidden">
 
-                <div class="npc-card" onclick="openNPC(1)">
-                    <div class="npc-name">BLACK MARKET</div>
-                    <div class="npc-avatar"></div>
-                </div>
-
-                <div class="npc-card" onclick="openNPC(2)">
-                    <div class="npc-name">ARCHIVE BOT</div>
-                    <div class="npc-avatar"></div>
-                </div>
-
-                <div class="npc-card" onclick="openNPC(3)">
-                    <div class="npc-name">HABITAT AI</div>
-                    <div class="npc-avatar"></div>
-                </div>
-
-            </div>
-
-            <!-- NPC DETAIL -->
-            <div id="npcDetail" class="npc-detail hidden">
-
-                <div class="npc-detail-box">
-
-                    <div class="npc-left">
-                        <div id="npcDetailName" class="npc-name"></div>
+                <!-- TOP: NPC INFO BOX -->
+                <div class="npc-info-box">
+                    <div class="npc-info-left">
+                        <div class="npc-info-title"><span id="npcDetailName"></span></div>
                         <div class="npc-avatar big"></div>
                     </div>
 
-                    <div class="npc-right">
-                        <div class="npc-top">
-                            <div id="npcCredits">CREDITS: 0C</div>
-                            <div id="npcDescription" class="npc-description"></div>
-                        </div>
-
-                        <div id="npcItems" class="npc-items"></div>
-
-                        <button class="back-btn" onclick="closeNPC()">BACK</button>
+                    <div class="npc-info-right">
+                        <div id="npcCredits">NPC: 1000C</div>
+                        <div id="userCredits">YOU: 1000C</div>
+                        <div class="npc-description-label"> > connecting. |</div>
+                        <div class="npc-description" id="npcDescription"></div>
                     </div>
-
                 </div>
+
+                <!-- SHOP ITEMS -->
+                <div class="shop-section">
+                    <div id="npcShopItems" class="shop-items-grid"></div>
+                </div>
+
+                 <div class="inventory-box">
+                    <div class="inventory-title">INVENTORY</div>
+                    <div id="playerInventory" class="inventory-grid"></div>
+                </div>
+
+                <button class="back-btn" onclick="closeNPC()">BACK</button>
 
             </div>
 

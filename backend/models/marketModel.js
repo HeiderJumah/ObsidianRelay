@@ -36,7 +36,7 @@ exports.getAllMarketItems = (callback) => {
 
 exports.getItemsByNpcId = (npcId, callback) => {
   const sql = `
-    SELECT npc_items.*, items.title, items.description, items.price
+    SELECT npc_items.*, items.title, items.description, items.price, items.icon
     FROM npc_items
     JOIN items ON npc_items.item_id = items.id
     WHERE npc_items.npc_id = ?

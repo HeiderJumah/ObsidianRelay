@@ -2,7 +2,7 @@ const db = require("../config/database");
 
 exports.getInventoryByUser = (userId, callback) => {
     const sql = `
-        SELECT inventory.*, items.title, items.description, items.price
+        SELECT inventory.*, items.title, items.description, items.price, items.icon
         FROM inventory
         JOIN items ON inventory.item_id = items.id
         WHERE user_id = ?

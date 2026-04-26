@@ -19,30 +19,51 @@ body {
    ======================================== */
 
 .login-container {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;  /* horizontal center */
+  align-items: center;      /* vertical center */
+
   overflow: hidden;
 }
 
-/* Background image with overlay */
-.login-container::before {
-  content: '';
+.login-container::after {
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('/media/website_img/login_bg.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1;
-  opacity: 0.7;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 40%, black 100%);
+  z-index: 0;
 }
 
+/* Intro text with glow effect */
+.login-intro {
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  text-align: center;
+
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #4f7cff;
+
+  text-shadow: 0 0 10px #4f7cff;
+}
+
+/* Background video */
+.login-bg-video {
+  position: absolute;  
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(2px) brightness(0.6);
+  z-index: -1;          
+}
 /* Login box container */
 .login-box {
   position: relative;
@@ -55,6 +76,18 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Form layout */
@@ -454,13 +487,6 @@ body {
   color: #4f7cff;
 }
 
-/* GRID */
-.inventory-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 100px);
-  gap: 20px;
-}
-
 /* SLOT */
 .inventory-slot {
   width: 100px;
@@ -470,6 +496,9 @@ body {
   position: relative;
   background: rgba(79,124,255,0.05);
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .inventory-slot:hover {
@@ -478,7 +507,22 @@ body {
   transform: scale(1.05);
 }
 
+.inventory-slot:hover .item-tooltip {
+  display: block;
+}
+
 /* ITEM ICON */
+.inventory-item-icon {
+  width: 70px;
+  height: 70px;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid rgba(79,124,255,0.4);
+  border-radius: 5px;
+  background-color: rgba(79,124,255,0.1);
+}
+
 .inventory-slot img {
   width: 60%;
   height: 60%;
@@ -495,6 +539,9 @@ body {
   right: 8px;
   font-size: 12px;
   font-weight: bold;
+  background: rgba(79,124,255,0.8);
+  padding: 2px 6px;
+  border-radius: 3px;
 }
 
 /* TOOLTIP */
@@ -511,19 +558,37 @@ body {
   display: none;
 }
 
+.item-tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20,30,50,0.98);
+  padding: 10px 12px;
+  border: 1px solid #4f7cff;
+  border-radius: 5px;
+  font-size: 11px;
+  white-space: normal;
+  max-width: 150px;
+  display: none;
+  z-index: 100;
+  color: #ccc;
+}
+
 .inventory-slot:hover .tooltip {
   display: block;
 }
 
 /* ========================================
-    MARKETPLACE - LAYOUT & COMPONENTS
+    MARKETPLACE - MAIN CONTAINER & NPC GRID
    ======================================== */
+
 .marketplace-container {
-  padding: 60px;
+  padding: 200px;
   min-height: calc(100vh - 180px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 /* NPC GRID */
@@ -531,15 +596,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 60px;
+  gap: 120px;
   flex-wrap: wrap;
 }
 
 .npc-card {
   cursor: pointer;
   text-align: center;
-  padding: 20px;
-  border: 2px solid rgba(79,124,255,0.3);
+  padding: 40px;
+  border: 4px solid rgba(79,124,255,0.3);
   border-radius: 10px;
   transition: all 0.3s ease;
 }
@@ -552,19 +617,19 @@ body {
 }
 
 .npc-name {
-  margin-bottom: 15px;
+  margin-bottom: 40px;
   font-family: 'Courier New', monospace;
   color: #4f7cff;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .npc-avatar {
   width: 140px;
-  height: 140px;
-  border: 3px solid #4f7cff;
+  height: 160px;
+  border: 4px solid #4f7cff;
   background: rgba(79,124,255,0.1);
-  background-image: url('/media/website_icons/habitat_icon.png');
+  /* background-image: url('/media/website_icons/habitat_icon.png'); */
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
@@ -576,85 +641,424 @@ body {
   width: 200px;
   height: 200px;
   border-width: 2px;
+  /* background-image: url('/media/website_icons/habitat_icon.png'); */
 }
 
 /* DETAIL VIEW */
 .hidden {
-  display: none;
+  display: none !important;
 }
 
-.npc-detail {
+.npc-detail-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px;
   align-items: center;
 }
 
-.npc-detail-box {
-  display: flex;
-  gap: 40px;
+/* NPC INFO BOX (TOP) */
+.npc-info-box {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 30px;
   border: 2px solid #4f7cff;
-  padding: 30px;
-  border-radius: 15px;
+  padding: 25px;
+  border-radius: 10px;
   background: rgba(20,30,50,0.9);
 }
 
-/* RIGHT SIDE */
-.npc-right {
+.npc-info-left {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.npc-top {
+.npc-info-title {
+  color: #4f7cff;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+.npc-info-right {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.npc-description {
-  border: 1px solid #4f7cff;
-  padding: 10px;
-  width: 200px;
-  font-size: 12px;
-}
-
-/* ITEMS */
-.npc-items {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  flex-direction: column;
   gap: 15px;
-  margin: 20px 0;
-  max-height: 300px;
-  overflow-y: auto;
 }
 
-.npc-item {
-  border: 1px solid #4f7cff;
-  background: rgba(79,124,255,0.1);
-  padding: 15px;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.npc-credits {
+  color: #ffc107;
+  font-size: 14px;
+  font-weight: bold;
 }
 
-.item-name {
+.npc-description-label {
   color: #4f7cff;
   font-weight: bold;
   font-size: 13px;
+  margin-top: 10px;
 }
 
-.item-price {
+.npc-description {
+  color: #ccc;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 15px;
+  border: 1px solid rgba(79,124,255,0.3);
+  border-radius: 5px;
+  background: rgba(79,124,255,0.05);
+}
+
+/* ========================================
+    SHOP SECTION - ITEM GRID & CONTROLS
+   ======================================== */
+
+.shop-section {
+  flex: 1;
+  width: 100%;
+  max-width: 700px;
+  background: rgba(20,30,50,0.9);
+  padding: 20px;
+  border-radius: 10px;
+}
+.shop-items-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+/* SHOP ITEM – Grundstruktur */
+.shop-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid rgba(79, 124, 255, 0.3);
+  border-radius: 6px;
+  background: rgba(79, 124, 255, 0.05);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.shop-item:hover {
+  border-color: #4f7cff;
+  background: rgba(79, 124, 255, 0.12);
+}
+
+/* TOOLTIP – nur bei Hover sichtbar */
+.shop-item-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);   /* erscheint oberhalb der Karte */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10, 15, 30, 0.97);
+  border: 1px solid #4f7cff;
+  border-radius: 6px;
+  padding: 10px 12px;
+  width: 180px;
+  z-index: 100;
+  pointer-events: none;         /* Tooltip selbst löst kein Hover aus */
+}
+
+/* Kleines Dreieck unten am Tooltip */
+.shop-item-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #4f7cff;
+}
+
+.shop-item-tooltip strong {
+  display: block;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #4f7cff;
+  margin-bottom: 5px;
+}
+
+.shop-item-tooltip span {
+  font-size: 11px;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.shop-item:hover .shop-item-tooltip {
+  display: block;
+}
+
+/* INVENTORY TOOLTIP – identisch zum Shop-Tooltip, aber in rot */
+.inventory-item-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10, 15, 30, 0.97);
+  border: 1px solid #ff6644;
+  border-radius: 6px;
+  padding: 10px 12px;
+  width: 180px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.inventory-item-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #ff6644;
+}
+
+.inventory-item-tooltip strong {
+  display: block;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #ff6644;
+  margin-bottom: 5px;
+}
+
+.inventory-item-tooltip span {
+  font-size: 11px;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.inventory-item:hover .inventory-item-tooltip {
+  display: block;
+}
+
+/* ICON – immer sichtbar */
+.shop-item-icon {
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(79, 124, 255, 0.4);
+  border-radius: 4px;
+  background-color: rgba(79, 124, 255, 0.08);
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* PREIS – immer sichtbar */
+.shop-item-price {
   color: #ffc107;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+/* CONTROLS – immer sichtbar */
+.shop-item-controls {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+}
+
+.qty-input {
+  width: 45px;
+  padding: 4px;
+  background: rgba(79,124,255,0.2);
+  border: 1px solid #4f7cff;
+  color: #4f7cff;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+.qty-input:focus {
+  outline: none;
+  background: rgba(79,124,255,0.4);
+}
+
+.item-btn {
+  flex: 1;
+  padding: 4px;
+  border: 1px solid #4f7cff;
+  background: transparent;
+  color: #4f7cff;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.item-btn:hover {
+  box-shadow: 0 0 8px currentColor;
+  transform: scale(1.05);
+}
+
+.item-btn.buy-btn {
+  color: #4fdb44;
+  border-color: #4fdb44;
+}
+
+.item-btn.buy-btn:hover {
+  background: rgba(79,219,68,0.2);
+  box-shadow: 0 0 8px #4fdb44;
+}
+
+.item-btn.sell-btn {
+  color: #ff6644;
+  border-color: #ff6644;
+}
+
+.item-btn.sell-btn:hover {
+  background: rgba(255,102,68,0.2);
+  box-shadow: 0 0 8px #ff6644;
+}
+
+/* INVENTORY BOX (BOTTOM) */
+.inventory-box {
+  width: 100%;
+  max-width: 700px;
+  border: 2px solid #4f7cff;
+  padding: 25px;
+  border-radius: 10px;
+  background: rgba(20,30,50,0.9);
+}
+
+.inventory-title {
+  color: #4f7cff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: 'Courier New', monospace;
+}
+
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.inventory-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border: 2px solid rgba(255,102,68,0.5);
+  background: rgba(255,102,68,0.05);
+  border-radius: 5px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.inventory-item:hover {
+  background: rgba(255,102,68,0.15);
+  box-shadow: 0 0 15px rgba(255,102,68,0.3);
+}
+
+.inventory-item-icon {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #ff6644;
+  background: rgba(255,102,68,0.1);
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 3px;
+}
+
+.inventory-item-qty {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(255,102,68,0.8);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.inventory-item-price {
+  color: #ffc107;
+  font-weight: bold;
   font-size: 12px;
 }
 
-.item-actions {
+.inventory-item-controls {
   display: flex;
-  gap: 10px;
-  margin-top: 8px;
+  gap: 5px;
+  width: 100%;
 }
 
+/* BACK BUTTON */
+.back-btn {
+  align-self: flex-end;
+  padding: 10px 20px;
+  background: transparent;
+  border: 2px solid #4f7cff;
+  color: #4f7cff;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.back-btn:hover {
+  background: rgba(79,124,255,0.2);
+  box-shadow: 0 0 15px rgba(79,124,255,0.5);
+}
+
+/* FEEDBACK MESSAGE */
+.market-message {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.market-message.success {
+  background: rgba(79,219,68,0.9);
+  color: white;
+  border: 1px solid #4fdb44;
+}
+
+.market-message.error {
+  background: rgba(255,102,68,0.9);
+  color: white;
+  border: 1px solid #ff6644;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* ITEM CONTROLS */
 .item-btn {
   flex: 1;
   padding: 6px 10px;
@@ -690,37 +1094,6 @@ body {
 .item-btn.sell-btn:hover {
   background: rgba(255,68,68,0.3);
   box-shadow: 0 0 8px #ff4444;
-}
-
-/* FEEDBACK MESSAGE */
-.market-message {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-.market-message.success {
-  background: green;
-}
-
-.market-message.error {
-  background: red;
-}
-
-/* BACK BUTTON */
-.back-btn {
-  align-self: flex-end;
-  background: transparent;
-  border: 1px solid #4f7cff;
-  color: white;
-  padding: 8px 15px;
-  cursor: pointer;
-}
-
-.back-btn:hover {
-  background: #4f7cff;
 }
 
 /* ========================================
