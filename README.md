@@ -28,6 +28,10 @@ Obsidian Relay ist ein browserbasiertes Handelsmodul in Sci-Fi-Optik. Spieler k√
 
 ---
 
+**Frontend Mockup**
+
+![Architektur](media/readme\_img/mockup.png)
+
 ## Enthaltene Kernfunktionen
 
 - Registrierung und Login
