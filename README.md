@@ -6,6 +6,7 @@ Datenbankbasierte Webanwendung für ein MMORPG-Handelssystem.
 
 Obsidian Relay ist ein browserbasiertes Handelsmodul in Sci-Fi-Optik. Spieler können sich registrieren, einloggen, im Relay navigieren, NPC-Händler auswählen, Items kaufen und verkaufen, ihr Inventar einsehen und alle Handelsaktionen als Transaktionen nachverfolgen.
 
+![Roadmap](media/readme\_img/website.png)
 
 ---
 
@@ -45,6 +46,31 @@ Obsidian Relay ist ein browserbasiertes Handelsmodul in Sci-Fi-Optik. Spieler k�
 - Authentifizierung: bcrypt + JWT
 - Datenzugriff: MySQL/MariaDB über Models und Controller
 
+## API-Endpunkte
+
+- POST /api/auth/register – Registrierung
+- POST /api/auth/login – Login
+- GET /api/inventory – Spielerinventar
+- GET /api/market/npcs – NPC-Händler laden
+- POST /api/market/buy – Item kaufen
+- POST /api/market/sell – Item verkaufen
+- GET /api/transactions – Transaktionen abrufen
+
+## Funktionsweise
+
+Das System basiert auf einer relationalen Datenbankstruktur:
+
+- Items werden zentral in der Tabelle `items` verwaltet
+- NPC-Händler sind über `npc_items` mit Items verknüpft
+- Das Inventar speichert Items pro Benutzer mit Mengen (`quantity`)
+- Käufe und Verkäufe werden in der Tabelle `transactions` protokolliert
+
+## Sicherheit
+
+- Passwörter werden mit bcrypt gehasht gespeichert
+- Authentifizierung erfolgt über JSON Web Tokens (JWT)
+- Geschützte Routen erfordern ein gültiges Token im Header
+
 ## Voraussetzungen
 
 - Node.js
@@ -61,6 +87,7 @@ Obsidian Relay ist ein browserbasiertes Handelsmodul in Sci-Fi-Optik. Spieler k�
 
 2. Backend vorbereiten
    - In den Ordner `backend` wechseln
+
    - Abhängigkeiten installieren:
      ```bash
      npm install
@@ -75,6 +102,7 @@ Obsidian Relay ist ein browserbasiertes Handelsmodul in Sci-Fi-Optik. Spieler k�
      ```
      http://localhost:3000/login.html
      ```
+![Roadmap](media/readme\_img/install.png)
 
 ## Testzugang
 
