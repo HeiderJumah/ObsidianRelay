@@ -35,9 +35,23 @@
 
         <!-- MAIN CONTENT -->
         <div class="main-content">
-            <h1>TRADE</h1>
-            <p>This is the trade page. Here you can view and manage your trading activities within the Obsidian Relay network.</p>
+            <div class="transactions-wrapper">
+                <div class="inventory-box">
+                    <div class="inventory-title">TRANSACTIONS</div>
+
+                    <!-- FILTER BUTTONS -->
+                    <div style="display:flex; gap:10px; margin-bottom:15px;">
+                    <button class="item-btn buy-btn" onclick="filterTransactions('buy')">BUY</button>
+                    <button class="item-btn sell-btn" onclick="filterTransactions('sell')">SELL</button>
+                    <button class="item-btn" onclick="filterTransactions('all')">ALL</button>
+                    </div>
+
+                    <!-- TRANSACTION LIST -->
+                    <div id="transactions" class="inventory-grid"></div>
+                </div>
+            </div>  
         </div>
+
         <!-- NEWS & ALERTS BAR -->
         <div class="news-bar">
             <div class="news-avatar">
@@ -61,6 +75,7 @@
         <!-- Include API and other scripts -->
         <script src="js/api.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/transactions.js"></script>
 
     </body>
 

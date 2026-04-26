@@ -584,7 +584,7 @@ body {
    ======================================== */
 
 .marketplace-container {
-  padding: 200px;
+  padding: 100px;
   min-height: calc(100vh - 180px);
   display: flex;
   flex-direction: column;
@@ -738,7 +738,7 @@ body {
   align-items: center;
   gap: 6px;
   padding: 10px;
-  border: 1px solid rgba(79, 124, 255, 0.3);
+  border: 2px solid rgba(79, 124, 255, 0.3);
   border-radius: 6px;
   background: rgba(79, 124, 255, 0.05);
   transition: border-color 0.2s, background 0.2s;
@@ -921,8 +921,8 @@ body {
 
 /* INVENTORY BOX (BOTTOM) */
 .inventory-box {
-  width: 100%;
-  max-width: 700px;
+  width: 80%;
+  max-width: 90%;
   border: 2px solid #4f7cff;
   padding: 25px;
   border-radius: 10px;
@@ -940,6 +940,7 @@ body {
 .inventory-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
   gap: 15px;
 }
 
@@ -962,8 +963,9 @@ body {
 }
 
 .inventory-item-icon {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
+  background-size: contain;
   border: 1px solid #ff6644;
   background: rgba(255,102,68,0.1);
   background-size: 40%;
@@ -1094,6 +1096,23 @@ body {
 .item-btn.sell-btn:hover {
   background: rgba(255,68,68,0.3);
   box-shadow: 0 0 8px #ff4444;
+}
+
+
+/* ========================================
+    TRANSACTIONS PAGE - LAYOUT & FILTERS
+   ======================================== */
+
+.transactions-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.transaction-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 /* ========================================
