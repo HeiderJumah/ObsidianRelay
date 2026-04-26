@@ -6,11 +6,6 @@ Datenbankbasierte Webanwendung für ein MMORPG-Handelssystem.
 
 Obsidian Relay ist ein browserbasiertes Handelsmodul in Sci-Fi-Optik. Spieler können sich registrieren, einloggen, im Relay navigieren, NPC-Händler auswählen, Items kaufen und verkaufen, ihr Inventar einsehen und alle Handelsaktionen als Transaktionen nachverfolgen.
 
----
-
-**Projektübersicht**
-
-Das Projekt simuliert ein Handelssystem aus einem MMORPG, bei dem Spieler mit NPC-Händlern interagieren können.
 
 ---
 
@@ -87,7 +82,7 @@ Nach dem Import des Schemas ist ein Demo-Account vorhanden:
 
 - Benutzername: `test`
 - E-Mail: `test@test.de`
-- Passwort: `test1234`
+- Passwort: `1234`
 
 ## Projektstruktur
 
@@ -96,28 +91,4 @@ Nach dem Import des Schemas ist ein Demo-Account vorhanden:
 - `database/schema.sql` – Datenbankschema und Seed-Daten
 - `media/` – Bilder, Icons, Videos und weitere Medien
 - `Konzeption/` – GDD, Projektplan und Protokoll
-
-## Hinweis zu Medien und Quellen
-
-Falls im Projekt externe Medien, Third-Party-Assets oder KI-generierte Inhalte verwendet wurden, sollten diese in einem Medienkatalog dokumentiert werden. Dazu gehören:
-
-- Dateiname
-- Verwendungszweck
-- Quelle / Lizenz / Prompt
-- ggf. eigene Anpassungen
-
-Das ist besonders wichtig für die Abgabe, da externe Inhalte transparent nachvollziehbar sein müssen.
-
-## Abgabehinweis
-
-Die finale Abgabe sollte sauber in die geforderte Ordnerstruktur gebracht werden:
-
-- `Endergebnis`
-- `Konzeption`
-- `Arbeitsdateien`
-- `Material`
-
-## Projektstand
-
-Die Anwendung ist funktional aufgebaut und enthält bereits die wichtigsten Kernbereiche des Handelssystems. Einige Seiten dienen aktuell noch als strukturelle Platzhalter für spätere Erweiterungen.
 
