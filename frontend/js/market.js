@@ -63,7 +63,7 @@ async function loadInventory() {
     userInventory = data.inventory || [];
     if (data.gold !== undefined) {
       const el = document.getElementById('userCredits');
-      if (el) el.textContent = `YOU: ${data.gold}C`;
+      if (el) el.textContent = `User Credits: ${data.gold}C`;
     }
   } catch (err) {
     console.error('Error loading inventory:', err);
@@ -89,7 +89,7 @@ async function openNPC(npcId) {
   document.getElementById('npcDetail').classList.remove('hidden');
   document.getElementById('npcDetailName').textContent = currentNPC.name;
   document.getElementById('npcDescription').textContent = currentNPC.description;
-  document.getElementById('npcCredits').textContent = `CREDITS: ${currentNPC.credits ?? 1000}C`;
+  document.getElementById('npcCredits').textContent = `Npc Credits: ${currentNPC.credits ?? 1000}C`;
 
   renderShopItems();
   renderPlayerInventory();
@@ -226,7 +226,7 @@ async function sellItem(itemId) {
     function updateNpcCredits(credits) {
       const el = document.getElementById('npcCredits');
       if (el && credits !== undefined) {
-        el.textContent = `CREDITS: ${credits}C`;
+        el.textContent = `NpcCredits: ${credits}C`;
         el.style.transition = 'color 0.3s';
         el.style.color = '#4fdb44';
         setTimeout(() => el.style.color = '#ffc107', 800);
@@ -236,7 +236,7 @@ async function sellItem(itemId) {
     function updateUserCredits(credits) {
     const el = document.getElementById('userCredits');
     if (el) {
-      el.textContent = `CREDITS: ${credits}C`;
+      el.textContent = `User Credits: ${credits}C`;
     }
     }
 

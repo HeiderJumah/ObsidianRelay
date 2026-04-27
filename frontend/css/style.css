@@ -11,7 +11,7 @@ body {
   font-family: Arial, sans-serif;
   background: black;
   color: white;
-  padding-bottom: 100px;
+  padding-bottom: 160px;
 }
 
 /* ========================================
@@ -584,11 +584,12 @@ body {
    ======================================== */
 
 .marketplace-container {
-  padding: 100px;
+  padding: 100px 40px;
   min-height: calc(100vh - 180px);
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 30px;
 }
 
 /* NPC GRID */
@@ -596,17 +597,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 120px;
+  gap: 80px;
   flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .npc-card {
   cursor: pointer;
   text-align: center;
-  padding: 40px;
+  padding: 45px 50px;
   border: 4px solid rgba(79,124,255,0.3);
   border-radius: 10px;
   transition: all 0.3s ease;
+  background: rgba(20,30,50,0.5);
 }
 
 .npc-card:hover {
@@ -621,7 +625,9 @@ body {
   font-family: 'Courier New', monospace;
   color: #4f7cff;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .npc-avatar {
@@ -638,9 +644,10 @@ body {
 }
 
 .npc-avatar.big {
-  width: 200px;
-  height: 200px;
-  border-width: 2px;
+  width: 240px;
+  height: 280px;
+  border-width: 3px;
+  background-size: 80%;
   /* background-image: url('/media/website_icons/habitat_icon.png'); */
 }
 
@@ -660,38 +667,61 @@ body {
 /* NPC INFO BOX (TOP) */
 .npc-info-box {
   display: grid;
-  grid-template-columns: 250px 1fr;
-  gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
   border: 2px solid #4f7cff;
-  padding: 25px;
+  padding: 30px;
   border-radius: 10px;
   background: rgba(20,30,50,0.9);
+  max-width: 900px;
+  width: 100%;
 }
 
 .npc-info-left {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
 .npc-info-title {
   color: #4f7cff;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .npc-info-right {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  justify-content: center;
 }
 
-.npc-credits {
-  color: #ffc107;
+#npcCredits {
+  color: #4f7cff;
   font-size: 14px;
   font-weight: bold;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
 }
+
+#userCredits {
+  position: absolute;
+  bottom: 15px;
+  right: 30px;
+  color: #4f7cff;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
+}
+
 
 .npc-description-label {
   color: #4f7cff;
@@ -717,9 +747,10 @@ body {
 .shop-section {
   flex: 1;
   width: 100%;
-  max-width: 700px;
+  max-width: 800px;
   background: rgba(20,30,50,0.9);
-  padding: 20px;
+  padding: 25px;
+  border: 2px solid #4f7cff;
   border-radius: 10px;
 }
 .shop-items-grid {
@@ -921,10 +952,11 @@ body {
 
 /* INVENTORY BOX (BOTTOM) */
 .inventory-box {
-  width: 80%;
-  max-width: 90%;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
   border: 2px solid #4f7cff;
-  padding: 25px;
+  padding: 30px;
   border-radius: 10px;
   background: rgba(20,30,50,0.9);
 }
@@ -1000,8 +1032,8 @@ body {
 
 /* BACK BUTTON */
 .back-btn {
-  align-self: flex-end;
-  padding: 10px 20px;
+  align-self: center;
+  padding: 12px 30px;
   background: transparent;
   border: 2px solid #4f7cff;
   color: #4f7cff;
@@ -1009,9 +1041,11 @@ body {
   border-radius: 5px;
   font-weight: bold;
   font-family: 'Courier New', monospace;
-  font-size: 13px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   transition: all 0.3s ease;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .back-btn:hover {
@@ -1198,13 +1232,13 @@ button:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 120px;
+  height: 130px;
   background: rgba(20, 30, 50, 0.95);
   border-top: 2px solid #4f7cff;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 40px;
+  gap: 15px;
+  padding: 12px 40px;
   z-index: 100;
 }
 
@@ -1225,12 +1259,12 @@ button:hover {
 
 .news-box {
   flex: 1;
-  height: 80px;
+  height: 100px;
   border-radius: 5px;
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding:  10px;
+  padding: 12px;
   font-size: 14px;
   font-weight: bold;
   position: relative;
@@ -1278,4 +1312,25 @@ button:hover {
     transform: translateX(-100%);
   }
 }
+
+/* ========================================
+   MARKET PAGE - ADJUSTMENTS
+   ======================================== */
+
+/* NPC Description - Hover Glow Effect */
+.npc-description {
+  transition: all 0.3s ease;
+  cursor: help;
+}
+
+.npc-description:hover {
+  color: #4f7cff;
+  border-color: #4f7cff;
+  text-shadow: 0 0 8px rgba(79, 124, 255, 0.6);
+  background: rgba(79, 124, 255, 0.1);
+  box-shadow: 0 0 18px rgba(79, 124, 255, 0.25);
+}
+
+
+
 
